@@ -21,3 +21,40 @@ int threeSumClosest(vector<int>& nums, int target) {
         }
         return ans;
     }
+
+
+
+// my firt approach
+int threeSumClosest(vector<int>& nums, int target) {
+        int mini = INT_MAX;
+        int maxi = INT_MIN;
+        bool isP = false;
+        int ans;
+        sort(nums.begin(), nums.end());
+        for(int i =0; i<nums.size() - 2; i++){
+            int low = i+1;
+            int high = nums.size() - 1;
+            while(low<high){
+                int sum = nums[i] + nums[low] + nums[high];
+                if(sum > target){
+                    mini = min(mini, sum);
+                    ans = mini;
+                    low++;
+                }
+                else if(sum == target){
+                    isP = true;
+                }
+                else{
+                    maxi = max(maxi, sum);
+                    ans = maxi;
+                    high--;
+                }
+            }
+        }
+        if(isP){
+            return target;
+        }
+        else{
+            return ans;
+        }
+    }
