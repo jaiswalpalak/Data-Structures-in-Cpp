@@ -16,8 +16,8 @@ public:
                 j--;
             }
             sum+=carry;
-            carry = sum/10;
-            sum = sum % 10;
+            carry = sum/10;      //  11/10 = 1; used to find the carry for the next digit.
+            sum = sum % 10;      // 11%1; used to find the last digit to add in the res string.
             res = res + to_string(sum);
         }
         reverse(res.begin(), res.end());
